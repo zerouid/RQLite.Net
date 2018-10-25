@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using RQLite.Sharp.Db;
+using RQLite.Net.Db;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// QueryResponse encapsulates a response to a query.

@@ -1,4 +1,4 @@
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// ClusterState defines the possible Raft states the current node can be in

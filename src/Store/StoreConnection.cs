@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using RQLite.Sharp.Db;
-using RQLite.Sharp.Util;
+using RQLite.Net.Db;
+using RQLite.Net.Util;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// Connection is a connection to the database.

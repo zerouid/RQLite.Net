@@ -1,7 +1,7 @@
 using System;
 using System.Net.Sockets;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// Listener is the interface Raft-compatible network layers

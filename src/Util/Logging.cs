@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace RQLite.Sharp.Util
+namespace RQLite.Net.Util
 {
     public class Logging
     {

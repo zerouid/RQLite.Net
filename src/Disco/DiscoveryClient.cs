@@ -4,9 +4,9 @@ using System.Net.Http;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using RQLite.Sharp.Util;
+using RQLite.Net.Util;
 
-namespace RQLite.Sharp.Disco
+namespace RQLite.Net.Disco
 {
     public class DiscoveryClient
     {

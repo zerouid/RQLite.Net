@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Rafty.Concensus.Peers;
 using Rafty.Infrastructure;
 
-namespace RQLite.Sharp.Raft
+namespace RQLite.Net.Raft
 {
     public class PeersProvider : IPeersProvider
     {

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace RQLite.Sharp.Db
+namespace RQLite.Net.Db
 {
     /// <summary>
     /// Result represents the outcome of an operation that changes rows.

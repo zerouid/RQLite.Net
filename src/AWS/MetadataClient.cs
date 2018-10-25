@@ -5,7 +5,7 @@ using System.Net.Http;
 /// <summary>
 /// Package aws provides functionality for accessing the AWS API.
 /// </summary>
-namespace RQLite.Sharp.AWS
+namespace RQLite.Net.AWS
 {
     /// <summary>
     /// MetadataClient is a client for fetching AWS EC2 instance metadata.

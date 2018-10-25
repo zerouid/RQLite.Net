@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// QueryRequest represents a query that returns rows, and does not modify

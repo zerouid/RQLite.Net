@@ -1,6 +1,6 @@
 using System.Diagnostics.Tracing;
 
-namespace RQLite.Sharp.Db
+namespace RQLite.Net.Db
 {
     public sealed class DbEventCountersSource : EventSource
     {

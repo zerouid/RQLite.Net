@@ -1,6 +1,6 @@
 using Rafty.Infrastructure;
 
-namespace RQLite.Sharp.Raft
+namespace RQLite.Net.Raft
 {
     public class RaftSettings : ISettings
     {

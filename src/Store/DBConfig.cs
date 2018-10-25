@@ -1,4 +1,4 @@
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// DBConfig represents the configuration of the underlying SQLite database.

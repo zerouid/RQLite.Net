@@ -1,7 +1,7 @@
 using System;
 using System.Net.Sockets;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// Transport is the network service provided to Raft, and wraps a Listener.

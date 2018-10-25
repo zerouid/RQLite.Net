@@ -1,4 +1,4 @@
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// BackupFormat represents the backup formats supported by the Store.

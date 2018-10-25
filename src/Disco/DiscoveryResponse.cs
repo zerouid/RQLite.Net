@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace RQLite.Sharp.Disco
+namespace RQLite.Net.Disco
 {
     /// <summary>
     /// Response represents the response returned by a Discovery Service.

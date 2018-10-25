@@ -1,6 +1,6 @@
 using System.Diagnostics.Tracing;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     public sealed class StoreEventCountersSource : EventSource
     {

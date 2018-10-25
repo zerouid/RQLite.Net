@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
-using RQLite.Sharp.Raft;
+using RQLite.Net.Raft;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// StoreConfig represents the configuration of the underlying Store.

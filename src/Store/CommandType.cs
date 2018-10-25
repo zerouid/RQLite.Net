@@ -1,4 +1,4 @@
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// commandType are commands that affect the state of the cluster, and must go through Raft.

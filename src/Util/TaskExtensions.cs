@@ -2,9 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Rafty.Infrastructure;
-using RQLite.Sharp.Store;
+using RQLite.Net.Store;
 
-namespace RQLite.Sharp.Util
+namespace RQLite.Net.Util
 {
     public static class TaskExtensions
     {

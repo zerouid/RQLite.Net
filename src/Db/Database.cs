@@ -1,4 +1,4 @@
-namespace RQLite.Sharp.Db
+namespace RQLite.Net.Db
 {
     /// <summary>
     /// DB is the SQL database.

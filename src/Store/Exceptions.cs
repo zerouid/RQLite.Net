@@ -1,7 +1,7 @@
 using System;
 using Rafty.Infrastructure;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     public class RaftException<T> : Exception
     {

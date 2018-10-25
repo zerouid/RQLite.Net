@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace RQLite.Sharp.Db
+namespace RQLite.Net.Db
 {
     /// <summary>
     /// Conn represents a connection to a database. Two Connection objects

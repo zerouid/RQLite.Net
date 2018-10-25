@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace RQLite.Sharp.Db
+namespace RQLite.Net.Db
 {
     /// <summary>
     /// Rows represents the outcome of an operation that returns query data.

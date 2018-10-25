@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// RaftResponse is the Raft metadata that will be included with responses, if

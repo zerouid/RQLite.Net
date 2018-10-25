@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 /// Package auth is a lightweight credential store.
 /// It provides functionality for loading credentials, as well as validating credentials.
 /// </summary>
-namespace RQLite.Sharp.Auth
+namespace RQLite.Net.Auth
 {
     /// <summary>
     /// CredentialsStore stores authentication and authorization information for all users.

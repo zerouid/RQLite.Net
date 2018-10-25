@@ -12,11 +12,11 @@ using Rafty.Concensus.States;
 using Rafty.FiniteStateMachine;
 using Rafty.Infrastructure;
 using Rafty.Log;
-using RQLite.Sharp.Db;
-using RQLite.Sharp.Raft;
-using RQLite.Sharp.Util;
+using RQLite.Net.Db;
+using RQLite.Net.Raft;
+using RQLite.Net.Util;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     /// <summary>
     /// Store is a SQLite database, where all changes are made via Raft consensus.

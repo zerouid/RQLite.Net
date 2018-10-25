@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RQLite.Sharp.Auth
+namespace RQLite.Net.Auth
 {
     /// <summary>
     /// Credential represents authentication and authorization configuration for a single user.

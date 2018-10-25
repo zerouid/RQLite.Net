@@ -1,1 +1,1 @@
-# RQLite.Sharp
+# RQLite.Net

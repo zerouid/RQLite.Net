@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Rafty.FiniteStateMachine;
 
-namespace RQLite.Sharp.Store
+namespace RQLite.Net.Store
 {
     public class Command : ICommand
     {

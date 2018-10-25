@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections.Generic;
-using RQLite.Sharp.Util;
+using RQLite.Net.Util;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Net;
@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace RQLite.Sharp.Cluster
+namespace RQLite.Net.Cluster
 {
     /// <summary>
     /// Package cluster supports intracluster control messaging.

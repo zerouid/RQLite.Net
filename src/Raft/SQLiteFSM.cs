@@ -10,7 +10,7 @@ using Rafty.FiniteStateMachine;
 using Rafty.Infrastructure;
 using Rafty.Log;
 
-namespace RQLite.Sharp.Raft
+namespace RQLite.Net.Raft
 {
     public class SQLiteFSM : IFiniteStateMachine
     {
