@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Optimize>true</Optimize>
+    <RootNamespace>RQLite.Sharp</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="3.1.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.109.2"/>
+    <PackageReference Include="System.Threading.Channels" Version="4.5.0"/>
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0"/>
+    <PackageReference Include="Rafty" Version="0.4.4"/>
+  </ItemGroup>
+</Project>
