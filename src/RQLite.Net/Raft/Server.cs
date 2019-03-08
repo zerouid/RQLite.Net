@@ -6,9 +6,11 @@ using Rafty.Infrastructure;
 
 namespace RQLite.Net.Raft
 {
-    public class HttpPeer : IPeer
+    public class Server : IPeer
     {
-        public string Id => throw new System.NotImplementedException();
+        public string Id { get; set; }
+
+        public string Addr { get; set; }
 
         public Task<RequestVoteResponse> Request(RequestVote requestVote)
         {

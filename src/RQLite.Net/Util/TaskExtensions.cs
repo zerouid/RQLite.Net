@@ -8,7 +8,7 @@ namespace RQLite.Net.Util
 {
     public static class TaskExtensions
     {
-        public static async Task<TResult> TimeoutAfter<TResult>(this Task<TResult> task, TimeSpan timeout)
+        public static async Task<TResult> TimeoutAfter<TResult>(this Task<TResult> task, TimeSpan timeout, Exception timeoutException = null)
         {
             using (var timeoutCancellationTokenSource = new CancellationTokenSource())
             {
@@ -20,7 +20,7 @@ namespace RQLite.Net.Util
                 }
                 else
                 {
-                    throw new TimeoutException("The operation has timed out.");
+                    throw timeoutException ?? new TimeoutException("The operation has timed out.");
                 }
             }
         }
