@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 /// <summary>
 /// Package auth is a lightweight credential store.
@@ -13,12 +14,12 @@ namespace RQLite.Net.Auth
     /// <summary>
     /// CredentialsStore stores authentication and authorization information for all users.
     /// </summary>
-    public class CredentialsStore
+    public class CredentialStore
     {
         private IDictionary<string, string> store;
         private IDictionary<string, IDictionary<string, bool>> perms;
         // NewCredentialsStore returns a new instance of a CredentialStore.
-        public CredentialsStore()
+        public CredentialStore()
         {
             store = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             perms = new Dictionary<string, IDictionary<string, bool>>(StringComparer.OrdinalIgnoreCase);
@@ -30,11 +31,14 @@ namespace RQLite.Net.Auth
         {
             using (var jsonRdr = new JsonTextReader(rdr))
             {
-                var serializer = new JsonSerializer();
+                var serializer = new JsonSerializer()
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                };
                 foreach (var cred in serializer.Deserialize<IEnumerable<Credential>>(jsonRdr))
                 {
                     store.Add(cred.Username, cred.Password);
-                    perms.Add(cred.Username, cred.Perms.ToDictionary(_ => _, _ => true, StringComparer.OrdinalIgnoreCase));
+                    perms.Add(cred.Username, cred.Perms?.ToDictionary(_ => _, _ => true, StringComparer.OrdinalIgnoreCase));
                 }
             }
         }
@@ -51,8 +55,9 @@ namespace RQLite.Net.Auth
             {
                 return false;
             }
+            bool isHashedPW = pw?.StartsWith("$2") ?? false;
 
-            return password == pw || BCrypt.Net.BCrypt.Verify(password, pw);
+            return password == pw || (isHashedPW && BCrypt.Net.BCrypt.Verify(password, pw));
         }
         /// <summary>
         /// CheckRequest returns true if b contains a valid username and password.
@@ -61,7 +66,8 @@ namespace RQLite.Net.Auth
         /// <returns></returns>
         public bool CheckRequest(IBasicAuther b)
         {
-            return b != null && Check(b.Username, b.Password);
+            var auth = b.BasicAuth();
+            return auth.ok && Check(auth.username, auth.password);
         }
         /// <summary>
         /// HasPerm returns true if username has the given perm. It does not perform any password checking.
@@ -71,7 +77,7 @@ namespace RQLite.Net.Auth
         /// <returns></returns>
         public bool HasPerm(string username, string perm)
         {
-            if (!perms.TryGetValue(username, out IDictionary<string, bool> m))
+            if (!perms.TryGetValue(username, out IDictionary<string, bool> m) || m == null)
             {
                 return false;
             }
@@ -97,7 +103,8 @@ namespace RQLite.Net.Auth
         /// <returns></returns>
         public bool HasPermRequest(IBasicAuther b, string perm)
         {
-            return b != null && HasPerm(b.Username, perm);
+            var auth = b.BasicAuth();
+            return auth.ok && HasPerm(auth.username, perm);
         }
     }
 }

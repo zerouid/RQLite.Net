@@ -55,15 +55,15 @@ namespace RQLite.Net.Tcp
             {
                 serverCertificate = new X509Certificate2();
                 serverCertificate.Import(certFile);
-                serverCertificate.PrivateKey = loadPrivateKey(certKey)
+                // serverCertificate.PrivateKey = loadPrivateKey(certKey)
             }
         }
 
 
-private static AsymmetricAlgorithm loadPrivateKey(string keyFile)
-{
-    
-}
+        // private static AsymmetricAlgorithm loadPrivateKey(string keyFile)
+        // {
+
+        // }
         private static IPEndPoint parseAddr(string addr)
         {
             int addressLength = addr.Length;  // If there's no port then send the entire string to the address parser

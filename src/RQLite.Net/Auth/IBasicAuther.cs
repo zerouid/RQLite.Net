@@ -5,7 +5,6 @@ namespace RQLite.Net.Auth
     /// </summary>
     public interface IBasicAuther
     {
-        string Username { get; }
-        string Password { get; }
+        (string username, string password, bool ok) BasicAuth();
     }
 }
