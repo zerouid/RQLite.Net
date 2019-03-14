@@ -15,11 +15,18 @@ namespace RQLite.Net.Cluster
     /// <summary>
     /// Package cluster supports intracluster control messaging.
     /// </summary>
-    public static class Cluster
+    public class Cluster
     {
         const int numAttempts = 3;
         private static readonly TimeSpan attemptInterval = TimeSpan.FromSeconds(5);
-        public static string Join(IEnumerable<string> joinAddr, string id, string addr, IDictionary<string, string> meta, bool skip)
+
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public Cluster(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        }
+        public string Join(IEnumerable<string> joinAddr, string id, string addr, IDictionary<string, string> meta, bool skip)
         {
             var logger = Logging.LoggerFactory.CreateLogger("[cluster-join]");
             Exception err = null;
@@ -44,13 +51,13 @@ namespace RQLite.Net.Cluster
             throw err ?? new Exception("Unknown error.");
         }
 
-        private static string AttemptJoin(string joinAddr, string id, string addr, IDictionary<string, string> meta, bool skip)
+        private string AttemptJoin(string joinAddr, string id, string addr, IDictionary<string, string> meta, bool skip)
         {
             if (string.IsNullOrEmpty(id))
             {
                 throw new ArgumentException("node ID not set");
             }
-            var resv = IPAddress.Parse(addr);
+            var resv = addr.ToIPEndPoint().Address;
             var fullAddr = new UriBuilder($"{joinAddr}/join").Uri;
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
@@ -59,18 +66,17 @@ namespace RQLite.Net.Cluster
                 ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             }
 
-            using (var client = new HttpClient())
+            var client = _httpClientFactory.CreateClient();
+
+            var b = JsonConvert.SerializeObject(new { id, meta, addr = resv.ToString() });
+            var content = new StringContent(b, Encoding.UTF8, "application/json");
+            var resp = client.PostAsync(fullAddr, content).Result;
+            switch (resp.StatusCode)
             {
-                var b = JsonConvert.SerializeObject(new { id, meta, addr = resv.ToString() });
-                var content = new StringContent(b, Encoding.UTF8, "application/json");
-                var resp = client.PostAsync(fullAddr, content).Result;
-                switch (resp.StatusCode)
-                {
-                    case HttpStatusCode.OK:
-                        return fullAddr.ToString();
-                    default:
-                        throw new Exception($"failed to join, node returned: {resp.ReasonPhrase}: ({resp.Content.ReadAsStringAsync().Result})");
-                }
+                case HttpStatusCode.OK:
+                    return fullAddr.ToString();
+                default:
+                    throw new Exception($"failed to join, node returned: {resp.ReasonPhrase}: ({resp.Content.ReadAsStringAsync().Result})");
             }
         }
     }
